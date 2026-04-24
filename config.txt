@@ -1,0 +1,3 @@
+# 先頭が # の行はコメントとして無視されます
+keywords = ROGUE, NISSAN ROGUE, Rogue, Nissan Rogue
+start_date = 2026/04/01
