@@ -1,3 +1,3 @@
 # 先頭が # の行はコメントとして無視されます
-keywords = ROGUE, NISSAN ROGUE, Rogue, Nissan Rogue, rogue, nissan rogue
-start_date = 2026/04/01
+keywords = エルグランド、キックス、ムラーノ、ノート、オーラ、アリア、セレナ、エクストレイル、サクラ
+start_date = 2026/08/24
