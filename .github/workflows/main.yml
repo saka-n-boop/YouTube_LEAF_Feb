@@ -1,4 +1,4 @@
-name: Run News Scraper (Google & Yahoo)
+name: Run YouTube Scraper
 
 on:
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  scrape-news:
+  scrape-YouTube:
     runs-on: ubuntu-latest
 
     steps:
