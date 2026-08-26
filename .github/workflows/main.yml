@@ -2,12 +2,12 @@ name: Run News Scraper (Google & Yahoo)
 
 on:
   schedule:
-    - cron: '0 15 * * *'
-    - cron: '7 15 * * *'
-    - cron: '18 15 * * *'
-    - cron: '29 15 * * *'
-    - cron: '36 15 * * *'
-
+    - cron: '0 15 * * *'   # JST 00:00
+    - cron: '13 15 * * *'  # JST 00:13
+    - cron: '26 15 * * *'  # JST 00:26
+    - cron: '39 15 * * *'  # JST 00:39
+    - cron: '52 15 * * *'  # JST 00:52
+    - cron: '5 16 * * *'   # JST 01:05
   workflow_dispatch:
 
 jobs:
@@ -15,28 +15,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Run Scraper
-      env:
-      # ここでシークレットを環境変数にマッピング
-        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-        SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
-      run: |
-        python main.py
+      - name: Run Scraper
+        env:
+          # ここでシークレットを環境変数にマッピング
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+        run: |
+          python main.py
 
-    - name: Check for workflow failure (optional)
-      if: ${{ failure() }}
-      run: echo "Workflow failed. Check logs for details."
+      - name: Check for workflow failure (optional)
+        if: ${{ failure() }}
+        run: echo "Workflow failed. Check logs for details."
